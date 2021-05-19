@@ -8,22 +8,21 @@
 
 typedef struct  s_m
 {
-    int				nbr;
-    double			ttd;
-    double			tte;
-    double			tts;
-    int				tmte;
-    int				six;
-    int				invalid;
-    int				die;
-    long			start_time;
-    pthread_t		*t;
-    pthread_t		death;
-    pthread_mutex_t	*mtx;
+	int				nbr;
+	double			ttd;
+	double			tte;
+	double			tts;
+	int				tmte;
+	int				six;
+	int				invalid;
+	int				die;
+	long			start_time;
+	pthread_t		*t;
+	pthread_t		death;
+	pthread_mutex_t	*mtx;
 	pthread_mutex_t	mtx_print;
-    pthread_mutex_t	mtx_table;
-    int             malloc_error;
-    int             end;
+	int				malloc_error;
+	int             end;
 }               t_m;
 
 typedef struct  s_philo

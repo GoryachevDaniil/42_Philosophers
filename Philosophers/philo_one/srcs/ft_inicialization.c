@@ -57,11 +57,6 @@ int ft_inicializate_threads(t_m *mn)
 	i = -1;
 	while (++i < mn->nbr)
 		pthread_detach(mn->t[i]);
-	// i = -1;
-	// while (++i < mn->nbr)
-	// 	if (pthread_join(mn->t[i], NULL))
-	// 		return (ft_error("Thread join failed."));
-	pthread_mutex_unlock(&ph->mn->mtx_print);
 	if (pthread_join(mn->death, NULL))
 		return (ft_error("Thread join failed."));
 	free(ph);
