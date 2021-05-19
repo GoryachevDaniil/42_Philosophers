@@ -4,39 +4,37 @@ void ft_eat(t_philo *ph)
 { 
 	if (ph->mn->die == 0)
 	{
-		pthread_mutex_lock(&ph->mn->mtx[ph->l_fork]);
-		pthread_mutex_lock(&ph->mn->mtx_print);
+		sem_wait(ph->mn->sem);
+		sem_wait(ph->mn->sem_print);
 		printf("\033[34m%d philo %d takes the right fork\033\n", ft_time_diff(ph->mn), ph->id);
-		pthread_mutex_unlock(&ph->mn->mtx_print);
-		pthread_mutex_lock(&ph->mn->mtx[ph->r_fork]);//перенести вниз
+		sem_post(ph->mn->sem_print);
 	}
 	if (ph->mn->die == 0)
 	{
-		pthread_mutex_lock(&ph->mn->mtx_print);
+		sem_wait(ph->mn->sem);
+		sem_wait(ph->mn->sem_print);
 		printf("\033[34m%d philo %d takes the left fork\033\n", ft_time_diff(ph->mn), ph->id);
-		pthread_mutex_unlock(&ph->mn->mtx_print);
+		sem_post(ph->mn->sem_print);
 	}
 	if (ph->mn->die == 0)
 	{
-		pthread_mutex_lock(&ph->mn->mtx_print);
-		
+		sem_wait(ph->mn->sem_print);
 		printf("\033[32m%d philo %d eating\033\n", ft_time_diff(ph->mn), ph->id);
-		pthread_mutex_unlock(&ph->mn->mtx_print);
+		sem_post(ph->mn->sem_print);
 		ph->last_eat = ft_get_time();
 		ft_usleep(ph->mn->tte);
-		pthread_mutex_unlock(&ph->mn->mtx[ph->r_fork]);
-		pthread_mutex_unlock(&ph->mn->mtx[ph->l_fork]);
+		sem_post(ph->mn->sem);
+		sem_post(ph->mn->sem);
 	}
 }
-
 
 void ft_sleep(t_philo *ph)
 {
 	if (ph->mn->die == 0)
 	{
-		pthread_mutex_lock(&ph->mn->mtx_print);
+		sem_wait(ph->mn->sem_print);
 		printf("\033[36m%d philo %d sleeping\033\n", ft_time_diff(ph->mn), ph->id);
-		pthread_mutex_unlock(&ph->mn->mtx_print);
+		sem_post(ph->mn->sem_print);
 		ft_usleep(ph->mn->tts);
 	}
 }
@@ -45,9 +43,9 @@ void ft_think(t_philo *ph)
 {
 	if (ph->mn->die == 0)
 	{
-		pthread_mutex_lock(&ph->mn->mtx_print);
+		sem_wait(ph->mn->sem_print);
 		printf("\036[36m%d philo %d thinking\033\n", ft_time_diff(ph->mn), ph->id);
-		pthread_mutex_unlock(&ph->mn->mtx_print);
+		sem_post(ph->mn->sem_print);
 	}
 }
 
@@ -64,14 +62,14 @@ void *ft_die(void *buf)
 		i = -1;
 		while (++i < ph->mn->nbr)
 		{
-			pthread_mutex_lock(&ph->mn->mtx_print);
+			sem_wait(ph->mn->sem_print);
 			if (ft_get_time() - ph[i].last_eat > ph->mn->ttd)
 			{
 				printf("\033[31m%d philo %d die\033\n", ft_time_diff(ph->mn) - 1, ph[i].id);
 				ph->mn->die = 1;
 				return (0);
 			}
-			pthread_mutex_unlock(&ph->mn->mtx_print);
+			sem_post(ph->mn->sem_print);
 		}
 		if (ph->mn->end == ph->mn->nbr)
 			break ;
@@ -94,10 +92,9 @@ void *ft_on_the_table(void *buf)
 			return (0);
 		ft_eat(ph);
 		if (i == ph->mn->tmte)
-		{
 			ph->mn->end++;
+		if (ph->mn->end == ph->mn->nbr)
 			break ;
-		}
 		ft_sleep(ph);
 		ft_think(ph);
 	}
