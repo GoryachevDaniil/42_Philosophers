@@ -1,166 +1,0 @@
-[34m0 philo 4 takes the right fork
-[34m0 philo 2 takes the right fork
-[34m0 philo 4 takes the left fork
-[34m0 philo 2 takes the left fork
-[32m0 philo 4 eating
-[32m0 philo 2 eating
-[34m200 philo 3 takes the right fork
-[34m200 philo 5 takes the right fork
-[36m200 philo 4 sleeping
-[34m200 philo 1 takes the right fork
-[36m200 philo 2 sleeping
-[34m200 philo 3 takes the left fork
-[34m200 philo 5 takes the left fork
-[32m200 philo 3 eating
-[32m200 philo 5 eating
-[36m400 philo 2 thinking
-[36m400 philo 4 thinking
-[34m400 philo 1 takes the left fork
-[36m400 philo 5 sleeping
-[36m400 philo 3 sleeping
-[34m400 philo 2 takes the right fork
-[34m400 philo 4 takes the right fork
-[32m400 philo 1 eating
-[34m400 philo 2 takes the left fork
-[32m400 philo 2 eating
-[36m600 philo 5 thinking
-[36m600 philo 3 thinking
-[34m600 philo 4 takes the left fork
-[36m600 philo 2 sleeping
-[36m600 philo 1 sleeping
-[34m600 philo 5 takes the right fork
-[34m600 philo 3 takes the right fork
-[32m600 philo 4 eating
-[34m600 philo 5 takes the left fork
-[32m600 philo 5 eating
-[36m800 philo 1 thinking
-[36m800 philo 2 thinking
-[36m800 philo 5 sleeping
-[36m800 philo 4 sleeping
-[34m800 philo 1 takes the right fork
-[34m800 philo 3 takes the left fork
-[34m800 philo 2 takes the right fork
-[34m800 philo 1 takes the left fork
-[32m800 philo 3 eating
-[32m800 philo 1 eating
-[36m1000 philo 5 thinking
-[36m1000 philo 4 thinking
-[36m1000 philo 3 sleeping
-[36m1000 philo 1 sleeping
-[34m1000 philo 2 takes the left fork
-[34m1000 philo 5 takes the right fork
-[34m1000 philo 4 takes the right fork
-[32m1000 philo 2 eating
-[34m1000 philo 5 takes the left fork
-[32m1000 philo 5 eating
-[36m1200 philo 1 thinking
-[36m1200 philo 2 sleeping
-[36m1200 philo 5 sleeping
-[36m1200 philo 3 thinking
-[34m1200 philo 4 takes the left fork
-[34m1200 philo 1 takes the right fork
-[34m1200 philo 3 takes the right fork
-[32m1200 philo 4 eating
-[34m1200 philo 1 takes the left fork
-[32m1200 philo 1 eating
-[36m1400 philo 5 thinking
-[36m1400 philo 2 thinking
-[36m1400 philo 4 sleeping
-[34m1400 philo 3 takes the left fork
-[36m1400 philo 1 sleeping
-[34m1400 philo 5 takes the right fork
-[34m1400 philo 2 takes the right fork
-[32m1400 philo 3 eating
-[34m1400 philo 5 takes the left fork
-[32m1400 philo 5 eating
-[36m1600 philo 1 thinking
-[36m1600 philo 4 thinking
-[36m1600 philo 5 sleeping
-[36m1600 philo 3 sleeping
-[34m1600 philo 2 takes the left fork
-[34m1600 philo 1 takes the right fork
-[34m1600 philo 4 takes the right fork
-[32m1600 philo 2 eating
-[34m1600 philo 1 takes the left fork
-[32m1600 philo 1 eating
-[36m1800 philo 5 thinking
-[36m1800 philo 3 thinking
-[36m1800 philo 1 sleeping
-[36m1800 philo 2 sleeping
-[34m1800 philo 4 takes the left fork
-[34m1800 philo 5 takes the right fork
-[34m1800 philo 3 takes the right fork
-[32m1800 philo 4 eating
-[34m1800 philo 5 takes the left fork
-[32m1800 philo 5 eating
-[36m2000 philo 1 thinking
-[36m2000 philo 2 thinking
-[36m2000 philo 5 sleeping
-[36m2000 philo 4 sleeping
-[34m2000 philo 3 takes the left fork
-[34m2000 philo 1 takes the right fork
-[34m2000 philo 2 takes the right fork
-[32m2000 philo 3 eating
-[34m2000 philo 1 takes the left fork
-[32m2000 philo 1 eating
-[36m2200 philo 5 thinking
-[36m2200 philo 4 thinking
-[36m2200 philo 3 sleeping
-[34m2200 philo 2 takes the left fork
-[36m2200 philo 1 sleeping
-[34m2200 philo 5 takes the right fork
-[34m2200 philo 4 takes the right fork
-[32m2200 philo 2 eating
-[34m2200 philo 5 takes the left fork
-[32m2200 philo 5 eating
-[36m2400 philo 1 thinking
-[36m2400 philo 3 thinking
-[34m2400 philo 4 takes the left fork
-[36m2400 philo 2 sleeping
-[36m2400 philo 5 sleeping
-[34m2400 philo 1 takes the right fork
-[34m2400 philo 3 takes the right fork
-[32m2400 philo 4 eating
-[34m2400 philo 1 takes the left fork
-[32m2400 philo 1 eating
-[36m2600 philo 5 thinking
-[36m2600 philo 2 thinking
-[36m2600 philo 1 sleeping
-[36m2600 philo 4 sleeping
-[34m2600 philo 3 takes the left fork
-[34m2600 philo 5 takes the right fork
-[34m2600 philo 2 takes the right fork
-[32m2600 philo 3 eating
-[34m2600 philo 5 takes the left fork
-[32m2600 philo 5 eating
-[36m2800 philo 1 thinking
-[36m2800 philo 4 thinking
-[36m2800 philo 3 sleeping
-[34m2800 philo 2 takes the left fork
-[34m2800 philo 1 takes the right fork
-[34m2800 philo 4 takes the right fork
-[32m2800 philo 2 eating
-[34m2800 philo 1 takes the left fork
-[32m2800 philo 1 eating
-[36m3000 philo 3 thinking
-[36m3000 philo 2 sleeping
-[34m3000 philo 4 takes the left fork
-[34m3000 philo 3 takes the right fork
-[32m3000 philo 4 eating
-[34m3000 philo 3 takes the left fork
-[32m3000 philo 3 eating
-[36m3200 philo 2 thinking
-[36m3200 philo 3 sleeping
-[36m3200 philo 4 sleeping
-[34m3200 philo 2 takes the right fork
-[34m3200 philo 2 takes the left fork
-[32m3200 philo 2 eating
-[36m3400 philo 4 thinking
-[36m3400 philo 3 thinking
-[34m3400 philo 4 takes the right fork
-[34m3400 philo 3 takes the right fork
-[34m3400 philo 4 takes the left fork
-[34m3400 philo 3 takes the left fork
-[32m3400 philo 4 eating
-[32m3400 philo 3 eating
-[31m3400 philo 5 die
