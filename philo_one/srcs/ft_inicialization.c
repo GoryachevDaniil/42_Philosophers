@@ -21,7 +21,7 @@ t_philo *ft_inicializate_philo(t_m *mn)
 	int i;
 	t_philo *ph;
 
-	ph = malloc(sizeof(t_philo *) * mn->nbr);
+	ph = malloc(sizeof(t_philo) * mn->nbr);
 	if (ph == NULL)
 		return (NULL);
 	i = -1;

@@ -24,11 +24,12 @@ typedef struct  s_m
 	pthread_t		*t;
 	pthread_t		death;
 	pthread_t		killa;
-	// pthread_t		monitoring;
+	pthread_t		monitoring;
 	sem_t			*sem;
 	sem_t			*sem_print;
 	sem_t			*sem_killa;
-	// sem_t			*sem_count;
+	sem_t			*sem_count;
+	sem_t			*sem_stop;
 	int				malloc_error;
 	int             end;
 }               t_m;
@@ -40,6 +41,7 @@ typedef struct  s_philo
     // int				r_fork;
     int 			last_eat;
     t_m             *mn;
+	int				godmod;
 	pid_t			pid;
 }               t_philo;
 

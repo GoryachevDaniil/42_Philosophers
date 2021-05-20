@@ -8,6 +8,7 @@ void ft_eat(t_philo *ph)
 	sem_post(ph->mn->sem_print);
 	sem_wait(ph->mn->sem);
 	sem_wait(ph->mn->sem_print);
+	ph->godmod = 1;
 	printf("\033[34m%d philo %d takes the left fork\033\n", ft_time_diff(ph->mn), ph->id);
 	sem_post(ph->mn->sem_print);
 	sem_wait(ph->mn->sem_print);
@@ -17,6 +18,7 @@ void ft_eat(t_philo *ph)
 	ft_usleep(ph->mn->tte);
 	sem_post(ph->mn->sem);
 	sem_post(ph->mn->sem);
+	ph->godmod = 0;
 }
 
 void ft_sleep(t_philo *ph)
@@ -42,10 +44,9 @@ void *ft_die(void *buf)
 	while(1)
 	{
 		sem_wait(ph->mn->sem_print);
-		if (ft_get_time() - ph->last_eat > ph->mn->ttd)
+		if (ft_get_time() - ph->last_eat > ph->mn->ttd && ph->godmod != 1)
 		{
 			printf("\033[31m%d philo %d die\033\n", ft_time_diff(ph->mn) - 1, ph->id);
-			// ph->mn->die = 1;
 			sem_post(ph->mn->sem_killa);
 			exit (0);
 		}
@@ -71,8 +72,8 @@ void *ft_on_the_table(void *buf)
 		if (i == ph->mn->tmte)
 		{
 			sem_post(ph->mn->sem_print);
+			ph[i].godmod = 1;
 			exit (0);
-			// sem_post(ph->mn->sem_count);
 		}
 		ft_sleep(ph);
 		ft_think(ph);

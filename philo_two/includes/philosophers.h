@@ -22,8 +22,6 @@ typedef struct  s_m
 	pthread_t		death;
 	sem_t			*sem;
 	sem_t			*sem_print;
-	// pthread_mutex_t	*mtx;
-	// pthread_mutex_t	mtx_print;
 	int				malloc_error;
 	int             end;
 }               t_m;
