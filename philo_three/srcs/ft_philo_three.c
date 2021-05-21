@@ -1,8 +1,8 @@
 #include "philosophers.h"
 
-void ft_validate(char *argv, t_m *mn)
+void	ft_validate(char *argv, t_m *mn)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (argv[++i])
@@ -10,10 +10,11 @@ void ft_validate(char *argv, t_m *mn)
 			mn->invalid = 1;
 }
 
-void ft_check_arg(t_m *mn, char **argv, int argc)
+void	ft_check_arg(t_m *mn, char **argv, int argc)
 {
-	int i = 0;
+	int	i;
 
+	i = 0;
 	mn->invalid = 0;
 	while (++i < argc)
 		ft_validate(argv[i], mn);
@@ -28,10 +29,9 @@ void ft_check_arg(t_m *mn, char **argv, int argc)
 	if (mn->six == 1)
 		if (mn->tmte < 0 || mn->tmte > 2147483647)
 			mn->invalid = 1;
-	
 }
 
-int ft_parser(t_m *mn, char **argv, int argc)
+int	ft_parser(t_m *mn, char **argv, int argc)
 {
 	if (argc == 6)
 		mn->six = 1;
@@ -43,7 +43,7 @@ int ft_parser(t_m *mn, char **argv, int argc)
 	mn->tte = ft_atoi(argv[3]);
 	mn->tts = ft_atoi(argv[4]);
 	if (mn->six == 1)
-			mn->tmte = ft_atoi(argv[5]);
+		mn->tmte = ft_atoi(argv[5]);
 	ft_check_arg(mn, argv, argc);
 	if (mn->invalid == 1)
 		return (ft_error("Invalid one or any arguments."));
@@ -52,15 +52,18 @@ int ft_parser(t_m *mn, char **argv, int argc)
 	return (0);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_m mn;
+	t_m	mn;
 
 	if (argc >= 5 && argc <= 6)
 	{
 		if (ft_parser(&mn, argv, argc) == -1)
-				return (0);
-		promezhutok(&mn);
+			return (0);
+		ft_inicializate_forks(&mn);
+		sem_unlink("semaphor");
+		sem_unlink("print");
+		sem_unlink("killa");
 	}
 	else
 		printf("%s\n", "Invalid nbr of arguments.");

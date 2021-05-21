@@ -1,8 +1,8 @@
 #include "philosophers.h"
 
-void *ft_monitoring_death(void *buf)
+void	*ft_monitoring_death(void *buf)
 {
-	t_philo *ph;
+	t_philo	*ph;
 
 	ph = (t_philo *) buf;
 	while (1)
@@ -14,30 +14,33 @@ void *ft_monitoring_death(void *buf)
 	return (0);
 }
 
-int ft_inicializate_semaphor(t_m *mn)
+int	ft_inicializate_semaphor(t_m *mn)
 {
 	sem_unlink("semaphor");
 	sem_unlink("print");
 	sem_unlink("killa");
-	if ((mn->sem = sem_open("semaphor", O_CREAT, 0777, mn->nbr)) == SEM_FAILED)
+	mn->sem = sem_open("semaphor", O_CREAT, 0777, mn->nbr);
+	if (mn->sem == SEM_FAILED)
 		return (ft_error("Semaphor open failed"));
-	if ((mn->sem_print = sem_open("print", O_CREAT, 0777, 1)) == SEM_FAILED)
+	mn->sem_print = sem_open("print", O_CREAT, 0777, 1);
+	if (mn->sem_print == SEM_FAILED)
 		return (ft_error("Semaphor open failed"));
-	if ((mn->sem_killa = sem_open("killa", O_CREAT, 0777, 0)) == SEM_FAILED)
+	mn->sem_killa = sem_open("killa", O_CREAT, 0777, 0);
+	if (mn->sem_killa == SEM_FAILED)
 		return (ft_error("Semaphor open failed"));
 	return (0);
 }
 
-t_philo *ft_inicializate_philo(t_m *mn)
+t_philo	*ft_inicializate_philo(t_m *mn)
 {
-	int i;
-	t_philo *ph;
+	int		i;
+	t_philo	*ph;
 
 	ph = malloc(sizeof(t_philo) * mn->nbr);
 	if (ph == NULL)
 		return (NULL);
 	i = -1;
-	while(++i < mn->nbr)
+	while (++i < mn->nbr)
 	{
 		ph[i].id = i + 1;
 		ph[i].last_eat = ft_get_time();
@@ -47,9 +50,9 @@ t_philo *ft_inicializate_philo(t_m *mn)
 	return (ph);
 }
 
-int ft_inicializate_threads(t_philo *ph)
+int	ft_inicializate_threads(t_philo *ph)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	if (pthread_create(&ph->mn->killa, NULL, ft_monitoring_death, ph))
@@ -64,14 +67,14 @@ int ft_inicializate_threads(t_philo *ph)
 	return (0);
 }
 
-int	promezhutok(t_m *mn)
+int	ft_inicializate_forks(t_m *mn)
 {
-	int i;
-	t_philo *ph;
+	int		i;
+	t_philo	*ph;
 
 	if (ft_inicializate_semaphor(mn) == -1)
 		return (0);
-	ph = ft_inicializate_philo(mn);	
+	ph = ft_inicializate_philo(mn);
 	if (ph == NULL)
 		return (ft_error("Philofophers inicializate failed."));
 	i = -1;
@@ -87,9 +90,6 @@ int	promezhutok(t_m *mn)
 	i = -1;
 	while (++i < mn->nbr)
 		waitpid(ph[i].pid, NULL, WUNTRACED);
-	sem_unlink("semaphor");
-	sem_unlink("print");
-	sem_unlink("killa");
 	free(ph);
 	return (0);
 }

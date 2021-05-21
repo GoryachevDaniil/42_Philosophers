@@ -1,8 +1,8 @@
 #include "philosophers.h"
 
-int ft_inicializate_mutex(t_m *mn)
+int	ft_inicializate_mutex(t_m *mn)
 {
-	int i;
+	int	i;
 
 	mn->mtx = malloc(sizeof(pthread_mutex_t) * mn->nbr + 1);
 	if (mn->mtx == NULL)
@@ -16,16 +16,16 @@ int ft_inicializate_mutex(t_m *mn)
 	return (0);
 }
 
-t_philo *ft_inicializate_philo(t_m *mn)
+t_philo	*ft_inicializate_philo(t_m *mn)
 {
-	int i;
-	t_philo *ph;
+	int		i;
+	t_philo	*ph;
 
 	ph = malloc(sizeof(t_philo) * mn->nbr);
 	if (ph == NULL)
 		return (NULL);
 	i = -1;
-	while(++i < mn->nbr)
+	while (++i < mn->nbr)
 	{
 		ph[i].id = i + 1;
 		ph[i].r_fork = i;
@@ -36,15 +36,15 @@ t_philo *ft_inicializate_philo(t_m *mn)
 	return (ph);
 }
 
-int ft_inicializate_threads(t_m *mn)
+int	ft_inicializate_threads(t_m *mn)
 {
-	int i;
-	t_philo *ph;
+	int		i;
+	t_philo	*ph;
 
 	mn->t = malloc(sizeof(pthread_t) * mn->nbr + 1);
 	if (ft_inicializate_mutex(mn) == -1)
 		return (0);
-	ph = ft_inicializate_philo(mn);	
+	ph = ft_inicializate_philo(mn);
 	if (ph == NULL)
 		return (ft_error("Philofophers inicializate failed."));
 	i = -1;
